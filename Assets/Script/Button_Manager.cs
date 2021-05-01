@@ -25,6 +25,4 @@ public class Button_Manager : MonoBehaviour
         Debug.Log("Exit");
         Application.Quit();
     }
-
-
 }
