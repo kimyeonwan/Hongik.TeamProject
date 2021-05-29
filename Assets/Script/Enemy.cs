@@ -53,8 +53,8 @@ public class Enemy : MonoBehaviour
         }
         else if(collision.gameObject.tag == "PlayerBullet")
         {
-            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-            OnHit(bullet.dmg);
+            //Shoot_Bullet bullet = collision.gameObject.GetComponent<Shoot_Bullet>();
+            //OnHit(bullet.dmg);
         }
     }
 }
