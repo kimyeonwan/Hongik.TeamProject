@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Rigidbody2D rigid;
 
-    public GameObject hit;
+    public GameObject Hit_Fx;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
 
         if(health<=0)
         {
-            Instantiate(hit, transform.position, transform.rotation);
+            Instantiate(Hit_Fx, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
@@ -53,8 +53,8 @@ public class Enemy : MonoBehaviour
         }
         else if(collision.gameObject.tag == "PlayerBullet")
         {
-            //Shoot_Bullet bullet = collision.gameObject.GetComponent<Shoot_Bullet>();
-            //OnHit(bullet.dmg);
+            Instantiate(Hit_Fx, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
     }
 }

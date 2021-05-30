@@ -18,18 +18,7 @@ public class Mouse_Cursor : MonoBehaviour
     }
     public void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 5);
-
-            //RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 100);
-            Vector3 HitPos = Input.mousePosition;
-
-            Debug.Log(HitPos);
-            //Update 전부 RayCast로 마우스 위치 받기. 추후 Bullet 구현할때 캐릭터 위치->raycast로 받은 위치까지 Bullet을 생성 후 이동시키기.
-        }
     }
     IEnumerator MyCursor()
     {

@@ -149,4 +149,4 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 1ee3d23109d2f3a4bab959adf7d0c38d, type: 3}
   - {fileID: 21300000, guid: ab75129fb0005cc4caa4542b8b25825a, type: 3}
-  hit: {fileID: 1140618987318039347, guid: ea6c0894423890242b8904b14df43b83, type: 3}
+  Hit_Fx: {fileID: 3880942351245804380, guid: 18ec840737bfab6489ae26c3bbcf695b, type: 3}

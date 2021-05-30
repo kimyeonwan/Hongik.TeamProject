@@ -607,7 +607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &378483700
 Transform:
   m_ObjectHideFlags: 0
@@ -3013,6 +3013,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GunTip: {fileID: 344154295}
   Bullet: {fileID: 5563611583219484158, guid: 5b1cfed9948f3e6499f38edf87591f9b, type: 3}
+  Bullet_Object: {fileID: 0}
+  Speed: 5
+  dmg: 5
+  lookAngle: 0
 --- !u!1 &1465213496
 GameObject:
   m_ObjectHideFlags: 0
