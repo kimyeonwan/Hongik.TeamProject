@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private float JumpPower = 5f;
     public bool isJumping = false;
 
+
     Animator animator;
     Rigidbody2D rigid;
 

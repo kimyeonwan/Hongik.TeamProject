@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SocialPlatforms;
 
 public class Gun_Shooting : MonoBehaviour
@@ -21,6 +22,9 @@ public class Gun_Shooting : MonoBehaviour
     private Gun_Manager currentGun;
     [SerializeField]
     private GameObject Player_Pos;
+
+    public Slider ReloadSlider;
+    float Reload_CooldownCurrent = 0.0f;
 
     //총의 각도 관련 변수
     private Vector2 lookDirection;
@@ -64,7 +68,23 @@ public class Gun_Shooting : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R))
         {
             StartCoroutine(ReloadCoroutine());
-        }    
+        }
+        if(is_Reload==true)
+        { 
+            Reload_CooldownCurrent += Time.deltaTime;
+            Reload_CooldownCurrent = Mathf.Clamp(Reload_CooldownCurrent, 0.0f, currentGun.reloadTime);
+            ReloadSlider.value = Reload_CooldownCurrent/currentGun.reloadTime;
+        }
+        if (ReloadSlider.value >= 1.0f)
+        {
+            ReloadSlider.gameObject.SetActive(false);
+            ReloadSlider.value = 0f;
+            Reload_CooldownCurrent = 0f;
+        }
+        else
+        {
+            ReloadSlider.gameObject.SetActive(true);
+        }
     }
     public void FireBullet()
     {
@@ -113,6 +133,7 @@ public class Gun_Shooting : MonoBehaviour
 
     IEnumerator ReloadCoroutine()
     {
+
         is_Reload = true;
         if (currentGun.carryBulletCount > 0)
         {
@@ -142,6 +163,28 @@ public class Gun_Shooting : MonoBehaviour
         is_Reload = false;
     }
 
+    public void CancelReload()
+    {
+        if(is_Reload)
+        {
+            StopAllCoroutines();
+            is_Reload = false;
+        }
+    }
+    public void GunChange(Gun_Manager Gun)
+    {
+        if(WeaponManager.currentWeapon!=null)
+        {
+            WeaponManager.currentWeapon.gameObject.SetActive(false);
+        }
+        currentGun = Gun;
+        WeaponManager.currentWeapon = currentGun.GetComponent<Transform>();
+        currentGun.gameObject.SetActive(true);
+    }
+    public Gun_Manager GetGun()
+    {
+        return currentGun;
+    }
     /*private void PlaySE(AudioClip _clip)
    {
        audioSource.clip = _clip;
