@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     Rigidbody2D Bullet_Rigid;
     public float Speed = 10f;
     public GameObject Fx;
+    public int dmg;
     private void OnEnable()
     {
         if (Bullet_Rigid == null)
@@ -17,7 +18,7 @@ public class Bullet : MonoBehaviour
     }
     void Start()
     {
-
+        dmg = 10;
     }
 
     // Update is called once per frame

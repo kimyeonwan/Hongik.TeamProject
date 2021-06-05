@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public int Hp = 100;
@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
 
     Animator animator;
     Rigidbody2D rigid;
+
+    public Slider Hpslider;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -28,22 +31,22 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-            Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
+        Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
 
-            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1.5f, LayerMask.GetMask("Platform"));
+        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1.5f, LayerMask.GetMask("Platform"));
 
         if (Input.GetButtonDown("Jump") && rayHit.collider != null)
         {
             isJumping = true;
         }
-        
-   
+
+
     }
     void FixedUpdate()
     {
         Move();
         Jump();
-  
+        Dead();
     }
 
     private void Move()
@@ -54,7 +57,7 @@ public class Player : MonoBehaviour
         {
             moveVelocity = Vector3.left;
 
-           // animator.SetBool("Run", true);
+            // animator.SetBool("Run", true);
         }
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
@@ -67,7 +70,7 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
-        if(!isJumping)
+        if (!isJumping)
         {
             return;
         }
@@ -90,9 +93,10 @@ public class Player : MonoBehaviour
 
     private void Dead()
     {
-        if(Hp<0)
+        if (Hp <= 0)
         {
-
+            Debug.Log("Dead");
+            Destroy(gameObject);
         }
     }
 

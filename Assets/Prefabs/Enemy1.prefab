@@ -136,7 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   health: 100
-  sprites:
-  - {fileID: 21300000, guid: 12a9b4391305128448522868ac5d0b7a, type: 3}
-  - {fileID: 21300000, guid: c005cde7d08ee8c438aec736df6ab9e6, type: 3}
   Hit_Fx: {fileID: 3880942351245804380, guid: 18ec840737bfab6489ae26c3bbcf695b, type: 3}
+  player: {fileID: 0}
+  Enemybullet: {fileID: 4314809737883650183, guid: fa1cc86fc991cf84b841a7c2072ac435, type: 3}
+  maxShotDelay: 0
+  curShotDelay: 0
