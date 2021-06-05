@@ -365,8 +365,9 @@ GameObject:
   m_Component:
   - component: {fileID: 344154295}
   - component: {fileID: 344154296}
+  - component: {fileID: 344154297}
   m_Layer: 0
-  m_Name: FireObject
+  m_Name: AR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -437,6 +438,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &344154297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344154294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af8b019e5f12e346ba4fd58ed010f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunName: AR
+  dmg: 5
+  range: 100
+  fireRate: 0.5
+  reloadTime: 2
+  reloadBulletCount: 30
+  currentBulletCount: 30
+  MaxcurrentBullet: 30
+  maxBulletCount: 200
+  carryBulletCount: 100
+  fire_Sound: {fileID: 0}
 --- !u!1 &373394664
 GameObject:
   m_ObjectHideFlags: 0
@@ -3013,11 +3037,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2345b869410713148ae3a0e46bd93772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 5
   GunTip: {fileID: 344154295}
   Bullet: {fileID: 5563611583219484158, guid: 5b1cfed9948f3e6499f38edf87591f9b, type: 3}
-  Bullet_Object: {fileID: 0}
-  Speed: 5
-  dmg: 5
+  currentGun: {fileID: 344154297}
+  Player_Pos: {fileID: 1075853404}
   lookAngle: 0
 --- !u!1 &1465213496
 GameObject:
