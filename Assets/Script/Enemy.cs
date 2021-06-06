@@ -19,14 +19,22 @@ public class Enemy : MonoBehaviour
     public float maxShotDelay;
     public float curShotDelay;
 
+    CameraShake CameraShake;
+    Player Player;
+
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         Enemyrigid = GetComponent<Rigidbody2D>();
+        speed = Random.Range(2, 5);
         Enemyrigid.velocity = Vector2.left * speed;
-
+        
         maxShotDelay = 2.0f;
+
+        CameraShake = FindObjectOfType<CameraShake>();
+
+        Player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -57,6 +65,10 @@ public class Enemy : MonoBehaviour
     {
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }
+    void ReturnPlayerSprite()
+    {
+        Player.SpriteRenderer.color = new Color(1, 1, 1, 1);
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -73,12 +85,15 @@ public class Enemy : MonoBehaviour
         }
         if (collision.gameObject.tag == "Player")
         {
-            Player player = GameObject.Find("Player").GetComponent<Player>();
-            if (player.Hp > 0)
+            
+            if (Player.Hp > 0)
             {
-                player.Hp -= 10;
-                player.Hpslider.value -= 0.1f;
+                Player.Hp -= 10;
+                Player.Hpslider.value -= 0.1f;
+                CameraShake.shake = 0.3f;
             }
+            Player.SpriteRenderer.color = new Color(1, 1, 1, 0.4f);
+            Invoke("ReturnPlayerSprite", 0.3f);
         }
     }
 
@@ -91,6 +106,8 @@ public class Enemy : MonoBehaviour
                 return;
             Vector3 dirVec = player.transform.position - transform.position;
             GameObject bullet = Instantiate(Enemybullet, transform.position, transform.rotation);
+            
+
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
 
             rigid.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);

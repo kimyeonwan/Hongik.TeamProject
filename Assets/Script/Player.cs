@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     private float JumpPower = 5f;
     public bool isJumping = false;
 
-
+    public SpriteRenderer SpriteRenderer;
     Animator animator;
     Rigidbody2D rigid;
 
@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         rigid = gameObject.GetComponent<Rigidbody2D>();
+        SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()

@@ -39,9 +39,15 @@ public class Game_Manager : MonoBehaviour
     void SpawnEnemy()
     {
         int ranEnemy = Random.Range(0, 2);
-        int ranPoint = Random.Range(0, 4);
+        int ranPoint = Random.Range(0, 5);
 
         GameObject enemy = Instantiate(enemyObjs[ranEnemy], spawnPoints[ranPoint].position, spawnPoints[ranPoint].rotation);
+        Vector3 dirVec = player.transform.position - enemy.transform.position;
+        if (ranPoint >=2)
+        {
+            //enemy.transform.Rotate(dirVec*100);
+        }
+        
 
         Enemy enemyLogic = enemy.GetComponent<Enemy>();
         enemyLogic.player = player;
