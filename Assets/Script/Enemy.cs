@@ -47,6 +47,7 @@ public class Enemy : MonoBehaviour
     void OnHit(int dmg)
     {
         health -= dmg;
+
         //spriteRenderer.sprite = sprites[1];
         spriteRenderer.color = new Color(1, 1, 1, 0.4f);
         Invoke("ReturnSprite", 0.3f);
@@ -79,8 +80,8 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "PlayerBullet")
         {
             //Instantiate(Hit_Fx, transform.position, transform.rotation);
-            Bullet bullet = GameObject.Find("Bullet(Clone)").GetComponent<Bullet>();
-            OnHit(bullet.dmg);
+            Gun_Manager currentGun = Gun_Shooting.instance.GetGun();
+            OnHit(currentGun.Gun_Dmg);
             //Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Player")

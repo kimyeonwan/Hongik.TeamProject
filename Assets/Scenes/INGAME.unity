@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GunName: AR
-  dmg: 5
+  Gun_Dmg: 14
   range: 100
   fireRate: 0.5
   reloadTime: 2
@@ -407,6 +407,7 @@ MonoBehaviour:
   MaxcurrentBullet: 30
   maxBulletCount: 200
   carryBulletCount: 100
+  Bullet_: {fileID: 5563611583219484158, guid: 5b1cfed9948f3e6499f38edf87591f9b, type: 3}
   fire_Sound: {fileID: 0}
 --- !u!1 &361594875
 GameObject:
@@ -1408,7 +1409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GunName: SubMachinGun
-  dmg: 3
+  Gun_Dmg: 5
   range: 30
   fireRate: 0.1
   reloadTime: 0.5
@@ -1417,6 +1418,7 @@ MonoBehaviour:
   MaxcurrentBullet: 40
   maxBulletCount: 300
   carryBulletCount: 200
+  Bullet_: {fileID: 5563611583219484158, guid: 5b1cfed9948f3e6499f38edf87591f9b, type: 3}
   fire_Sound: {fileID: 0}
 --- !u!212 &970998037
 SpriteRenderer:
@@ -2238,7 +2240,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 5
   GunTip: {fileID: 344154295}
-  Bullet: {fileID: 5563611583219484158, guid: 5b1cfed9948f3e6499f38edf87591f9b, type: 3}
   currentGun: {fileID: 344154297}
   Player_Pos: {fileID: 1075853404}
   ReloadSlider: {fileID: 896077794}

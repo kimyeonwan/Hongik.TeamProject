@@ -14,7 +14,6 @@ public class Gun_Shooting : MonoBehaviour
 
     public Transform GunTip;
 
-    public GameObject Bullet;
     private GameObject Bullet_Object;
     public Queue<GameObject> Bullet_queue = new Queue<GameObject>();
 
@@ -40,7 +39,7 @@ public class Gun_Shooting : MonoBehaviour
 
         for (int i = 0; i < 20; i++)
         {
-            Bullet_Object = Instantiate(Bullet, GunTip.position, GunTip.rotation);
+            Bullet_Object = Instantiate(currentGun.GetComponent<Gun_Manager>().Bullet_, GunTip.position, GunTip.rotation);
             Bullet_queue.Enqueue(Bullet_Object);
             Bullet_Object.SetActive(false);
         }

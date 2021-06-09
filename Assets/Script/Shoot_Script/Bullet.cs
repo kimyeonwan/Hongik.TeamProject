@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public static Bullet instance;
     Rigidbody2D Bullet_Rigid;
     public float Speed = 10f;
     public GameObject Fx;
-    public int dmg;
+
     private void OnEnable()
     {
         if (Bullet_Rigid == null)
@@ -16,9 +17,13 @@ public class Bullet : MonoBehaviour
         Bullet_Rigid.velocity = Gun_Shooting.instance.GunTip.right * Speed;
         StartCoroutine(DestroyBullet());
     }
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
-        dmg = 10;
+
     }
 
     // Update is called once per frame
