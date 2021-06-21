@@ -16,11 +16,23 @@ public class Game_Manager : MonoBehaviour
 
     public GameObject player;
 
+
+    public int enemyDeadnum;
+    public bool isBoss;
+
+    public AudioSource audio;
+    public AudioClip BGMSound;
+
     // Start is called before the first frame update
     void Start()
     {
         //패널 삭제
         Destroy(panel.gameObject, destroyTime);
+        enemyDeadnum = 0;
+        isBoss = false;
+        audio = gameObject.AddComponent<AudioSource>();
+        audio.loop = false;
+        audio.volume = 0.3f;
     }
 
     // Update is called once per frame
@@ -28,28 +40,38 @@ public class Game_Manager : MonoBehaviour
     {
         curSpawnDelay += Time.deltaTime;
 
-        if (curSpawnDelay > maxSpawnDelay)
+        if (curSpawnDelay > maxSpawnDelay && !isBoss)
         {
             SpawnEnemy();
             maxSpawnDelay = Random.Range(0.5f, 3.0f);
             curSpawnDelay = 0;
         }
+        if(audio.isPlaying==false)
+        {
+            audio.clip = BGMSound;
+            audio.Play();
+        }
     }
 
     void SpawnEnemy()
     {
-        int ranEnemy = Random.Range(0, 2);
-        int ranPoint = Random.Range(0, 5);
-
-        GameObject enemy = Instantiate(enemyObjs[ranEnemy], spawnPoints[ranPoint].position, spawnPoints[ranPoint].rotation);
-        Vector3 dirVec = player.transform.position - enemy.transform.position;
-        if (ranPoint >=2)
+        if(enemyDeadnum < 10)
         {
-            //enemy.transform.Rotate(dirVec*100);
-        }
-        
+            int ranEnemy = Random.Range(0, 3);
+            int ranPoint = Random.Range(0, 5);
 
-        Enemy enemyLogic = enemy.GetComponent<Enemy>();
-        enemyLogic.player = player;
+            GameObject enemy = Instantiate(enemyObjs[ranEnemy], spawnPoints[ranPoint].position, spawnPoints[ranPoint].rotation);
+
+            Enemy enemyLogic = enemy.GetComponent<Enemy>();
+            enemyLogic.player = player;
+        }
+        else
+        {
+            isBoss = true;
+            GameObject enemy = Instantiate(enemyObjs[3], spawnPoints[2].position, spawnPoints[2].rotation);
+            
+            Enemy enemyLogic = enemy.GetComponent<Enemy>();
+            enemyLogic.player = player;
+        }
     }
 }

@@ -134,10 +134,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4c4d1a5af59f54ebdd892d93668236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: Enemy1
   speed: 2
-  health: 100
+  health: 50
   Hit_Fx: {fileID: 3880942351245804380, guid: 18ec840737bfab6489ae26c3bbcf695b, type: 3}
   player: {fileID: 0}
   Enemybullet: {fileID: 4314809737883650183, guid: fa1cc86fc991cf84b841a7c2072ac435, type: 3}
   maxShotDelay: 0
   curShotDelay: 0
+  AudioSource: {fileID: 0}
+  bulletSound: {fileID: 8300000, guid: 08f78eba48bb21c44ac5a74ca84efc83, type: 3}
+  reloadSound: {fileID: 8300000, guid: 8f268095f67575b44b10ea19a4482b2c, type: 3}
