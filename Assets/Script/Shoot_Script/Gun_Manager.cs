@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gun_Manager : MonoBehaviour
 {
@@ -17,11 +18,11 @@ public class Gun_Manager : MonoBehaviour
     public int maxBulletCount;//최대 소유 가능 총알 개수
     public int carryBulletCount;//현재 소유한 총알 개수
 
-    public GameObject Bullet_;
-
     //public ParticleSystem muzzleFlash;
-
+    public Texture GunSprite;
     public AudioClip fire_Sound;
+
+    public GameObject Bullet_;
 
     private void Start()
     {
