@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     {
         rigid = gameObject.GetComponent<Rigidbody2D>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
+        // FindObjectOfType<Game_Manager>();
     }
 
     void Update()
@@ -49,23 +50,54 @@ public class Player : MonoBehaviour
         Move();
         Jump();
         Dead();
+
+        //점프 애니메이션
+        if (rigid.velocity.y >= 0.1f)
+        {
+            animator.SetBool("Jump", true);
+        }
+        else
+        {
+            animator.SetBool("Jump", false);
+        }
+
+        //왼쪽오른쪽
+        if(Input.GetButton("Horizontal"))
+        {
+            SpriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+        }
+
+        /*
+        if(Input.GetMouseButtonDown(0))
+        {
+            animator.SetBool("Shoot", true);
+        }
+        else
+        {
+            animator.SetBool("Shoot", false);
+        }
+        */
     }
 
     private void Move()
     {
         Vector3 moveVelocity = Vector3.zero;
 
+        if(Input.GetAxisRaw("Horizontal") == 0)
+        {
+            animator.SetBool("Run", false);
+        }
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
             moveVelocity = Vector3.left;
 
-            // animator.SetBool("Run", true);
+            animator.SetBool("Run", true);
         }
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
             moveVelocity = Vector3.right;
 
-            //animator.SetBool("Run", true);
+            animator.SetBool("Run", true);
         }
         transform.position += moveVelocity * MoveSpeed * Time.deltaTime;
     }
@@ -76,19 +108,13 @@ public class Player : MonoBehaviour
         {
             return;
         }
+        
         rigid.velocity = Vector2.zero;
 
         Vector2 jumpVelcity = new Vector2(0, JumpPower);
         rigid.AddForce(jumpVelcity, ForceMode2D.Impulse);
 
-        /*if (Input.GetAxisRaw("Horizontal") < 0)
-        {
-            animator.SetBool("Back_Jump",true);
-        }
-        if (Input.GetAxisRaw("Horizontal") > 0)
-        {
-            animator.SetBool("Jump", true);
-        }*/
+        
 
         isJumping = false;
     }

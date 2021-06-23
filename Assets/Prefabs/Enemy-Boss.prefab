@@ -147,7 +147,7 @@ MonoBehaviour:
   enemyName: Enemy_Boss
   speed: 1
   health: 200
-  Hit_Fx: {fileID: 3880942351245804380, guid: 18ec840737bfab6489ae26c3bbcf695b, type: 3}
+  Hit_Fx: {fileID: 7608885063393281234, guid: 9d64d9d4bc88d1c40a0a8c69fa750d51, type: 3}
   player: {fileID: 0}
   Enemybullet: {fileID: 4314809737883650183, guid: fa1cc86fc991cf84b841a7c2072ac435, type: 3}
   maxShotDelay: 0

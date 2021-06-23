@@ -407,8 +407,9 @@ MonoBehaviour:
   MaxcurrentBullet: 30
   maxBulletCount: 200
   carryBulletCount: 100
-  Bullet_: {fileID: 5563611583219484158, guid: 5b1cfed9948f3e6499f38edf87591f9b, type: 3}
+  GunSprite: {fileID: 0}
   fire_Sound: {fileID: 8300000, guid: 08f78eba48bb21c44ac5a74ca84efc83, type: 3}
+  Bullet_: {fileID: 5563611583219484158, guid: 5b1cfed9948f3e6499f38edf87591f9b, type: 3}
 --- !u!1 &361594875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,8 +1425,9 @@ MonoBehaviour:
   MaxcurrentBullet: 40
   maxBulletCount: 300
   carryBulletCount: 200
-  Bullet_: {fileID: 5563611583219484158, guid: 5b1cfed9948f3e6499f38edf87591f9b, type: 3}
+  GunSprite: {fileID: 0}
   fire_Sound: {fileID: 0}
+  Bullet_: {fileID: 5563611583219484158, guid: 5b1cfed9948f3e6499f38edf87591f9b, type: 3}
 --- !u!212 &970998037
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1733,6 +1735,7 @@ GameObject:
   - component: {fileID: 1075853409}
   - component: {fileID: 1075853408}
   - component: {fileID: 1075853407}
+  - component: {fileID: 1075853410}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1862,6 +1865,25 @@ CapsuleCollider2D:
   m_Offset: {x: 0.020264786, y: -0.090269886}
   m_Size: {x: 0.17575042, y: 0.5294606}
   m_Direction: 0
+--- !u!95 &1075853410
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075853404}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e8ceb2fd26f10fc4ba625be8fd555459, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1238916769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2224,7 +2246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427618847}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.183, y: -0.045, z: 0}
+  m_LocalPosition: {x: 0.183, y: 0.011, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 344154295}
