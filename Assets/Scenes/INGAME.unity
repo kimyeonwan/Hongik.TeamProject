@@ -756,7 +756,7 @@ MonoBehaviour:
   player: {fileID: 1075853404}
   enemyDeadnum: 0
   isBoss: 0
-  audio: {fileID: 0}
+  audioSource: {fileID: 0}
   BGMSound: {fileID: 8300000, guid: fa48fd069663c416c8ae40edb1dbe116, type: 3}
 --- !u!4 &381693767
 Transform:
@@ -2202,6 +2202,10 @@ MonoBehaviour:
   isJumping: 0
   SpriteRenderer: {fileID: 0}
   Hpslider: {fileID: 1245645985}
+  audioSource: {fileID: 0}
+  jumpSound: {fileID: 8300000, guid: f3b834e881c44dc4382d47d5cb802931, type: 3}
+  hitSound: {fileID: 8300000, guid: 2d07eba8eab06cb45898cb11da4a54e2, type: 3}
+  itemSound: {fileID: 8300000, guid: 79180f511d89441b9aa23ccae1992fe0, type: 3}
 --- !u!50 &1075853408
 Rigidbody2D:
   serializedVersion: 4
@@ -2721,6 +2725,10 @@ MonoBehaviour:
   Player_Pos: {fileID: 1075853404}
   ReloadSlider: {fileID: 896077794}
   lookAngle: 0
+  audioSource: {fileID: 0}
+  fire_Sound1: {fileID: 8300000, guid: 947719fd38845824ba3638af9d8e4e54, type: 3}
+  fire_Sound2: {fileID: 8300000, guid: 92d35fe1c59bbd14eaee9e3d3b54cea7, type: 3}
+  fire_Sound3: {fileID: 8300000, guid: 929fd214252d7034d93c9463bf63e091, type: 3}
 --- !u!114 &1427618850
 MonoBehaviour:
   m_ObjectHideFlags: 0

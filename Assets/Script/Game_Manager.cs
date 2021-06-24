@@ -20,7 +20,7 @@ public class Game_Manager : MonoBehaviour
     public int enemyDeadnum;
     public bool isBoss;
 
-    public AudioSource audio;
+    public AudioSource audioSource;
     public AudioClip BGMSound;
 
     // Start is called before the first frame update
@@ -30,9 +30,9 @@ public class Game_Manager : MonoBehaviour
         Destroy(panel.gameObject, destroyTime);
         enemyDeadnum = 0;
         isBoss = false;
-        audio = gameObject.AddComponent<AudioSource>();
-        audio.loop = false;
-        audio.volume = 0.3f;
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.loop = false;
+        audioSource.volume = 0.3f;
     }
 
     // Update is called once per frame
@@ -46,10 +46,10 @@ public class Game_Manager : MonoBehaviour
             maxSpawnDelay = Random.Range(0.5f, 3.0f);
             curSpawnDelay = 0;
         }
-        if(audio.isPlaying==false)
+        if(audioSource.isPlaying==false)
         {
-            audio.clip = BGMSound;
-            audio.Play();
+            audioSource.clip = BGMSound;
+            audioSource.Play();
         }
     }
 

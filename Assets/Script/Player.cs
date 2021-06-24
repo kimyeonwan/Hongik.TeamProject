@@ -20,6 +20,13 @@ public class Player : MonoBehaviour
 
     public Slider Hpslider;
 
+    public AudioSource audioSource;
+    public AudioClip jumpSound;
+    public AudioClip hitSound;
+    public AudioClip itemSound;
+
+
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -28,6 +35,9 @@ public class Player : MonoBehaviour
     {
         rigid = gameObject.GetComponent<Rigidbody2D>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.loop = false;
+        audioSource.volume = 0.2f;
         // FindObjectOfType<Game_Manager>();
     }
 
@@ -109,7 +119,8 @@ public class Player : MonoBehaviour
         Vector2 jumpVelcity = new Vector2(0, JumpPower);
         rigid.AddForce(jumpVelcity, ForceMode2D.Impulse);
 
-        
+        audioSource.clip = jumpSound;
+        audioSource.Play();
 
         isJumping = false;
     }
@@ -123,4 +134,22 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyBullet")
+        {
+            animator.SetTrigger("hurt");
+
+            audioSource.clip = hitSound;
+            audioSource.Play();
+            //맞았다는 소리 내기
+        }
+
+        if(collision.gameObject.tag == "Item")
+        {
+            audioSource.clip = itemSound;
+            audioSource.Play();
+            //아이템 먹는 소리 내기
+        }
+    }
 }

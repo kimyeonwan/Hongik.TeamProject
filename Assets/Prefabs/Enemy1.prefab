@@ -145,3 +145,7 @@ MonoBehaviour:
   AudioSource: {fileID: 0}
   bulletSound: {fileID: 8300000, guid: 08f78eba48bb21c44ac5a74ca84efc83, type: 3}
   reloadSound: {fileID: 8300000, guid: 8f268095f67575b44b10ea19a4482b2c, type: 3}
+  itemObjs:
+  - {fileID: 9146599603865814921, guid: b9e933aee03181a4680ffc48d70d03da, type: 3}
+  - {fileID: 1752233009375550100, guid: b4de80ac94509c74e86ba623f1ff0436, type: 3}
+  - {fileID: 7562654781915181365, guid: 3a52234548e244946b81f7a79a8696c9, type: 3}

@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
     public AudioClip bulletSound;
     public AudioClip reloadSound;
 
+    public GameObject[] itemObjs;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +71,10 @@ public class Enemy : MonoBehaviour
             spriteRenderer.flipY = true;
             Enemyrigid.AddForce(Vector2.down * 5, ForceMode2D.Impulse);
             Game_Manager.enemyDeadnum += 1;
+
+            int ranItem = Random.Range(0, 3);
+            Instantiate(itemObjs[ranItem], transform.position, transform.rotation);
+
             Destroy(gameObject, 0.5f);
         }
         if (health <= 0 && enemyName == "Enemy_Boss")

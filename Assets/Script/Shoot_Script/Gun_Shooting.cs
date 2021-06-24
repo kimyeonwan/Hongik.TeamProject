@@ -33,13 +33,20 @@ public class Gun_Shooting : MonoBehaviour
     public float lookAngle;
 
     private bool is_Reload = false;
-    private AudioSource audioSource;
+
+    public AudioSource audioSource;
+    public AudioClip fire_Sound1;
+    public AudioClip fire_Sound2;
+    public AudioClip fire_Sound3;
 
     private void Start()
     {
         //audioSource = GetComponent<AudioSource>();
         instance = this;
-
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.loop = false;
+        audioSource.volume = 0.2f;
+        audioSource.clip = fire_Sound1;
         for (int i = 0; i < 20; i++)
         {
             Bullet_Object = Instantiate(currentGun.GetComponent<Gun_Manager>().Bullet_, GunTip.position, GunTip.rotation);
@@ -91,7 +98,21 @@ public class Gun_Shooting : MonoBehaviour
         {
             Fire_Grenade();
             Grenade_num--;
-        }    
+        }
+
+        //
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            audioSource.clip = fire_Sound1;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            audioSource.clip = fire_Sound2;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            audioSource.clip = fire_Sound3;
+        }
     }
     public void FireBullet()
     {
@@ -132,7 +153,7 @@ public class Gun_Shooting : MonoBehaviour
     {
         currentGun.currentBulletCount--;
         currentFireRate = currentGun.fireRate;//연사 속도 재계산
-        PlaySE();
+        audioSource.Play();
     }
 
 
@@ -198,8 +219,8 @@ public class Gun_Shooting : MonoBehaviour
     }
 
     private void PlaySE()
-   {
-       audioSource.clip = currentGun.fire_Sound;
-       audioSource.Play();
-   }
+    {
+
+        
+    }
 }
