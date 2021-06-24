@@ -9,6 +9,7 @@ public class Gun_Shooting : MonoBehaviour
 {
     public static Gun_Shooting instance;
 
+    public int Grenade_num = 5;
     public float Speed = 5f;//총알의 속도
     private float currentFireRate;//연사 속도 받아올 매개변수
 
@@ -17,6 +18,8 @@ public class Gun_Shooting : MonoBehaviour
     private GameObject Bullet_Object;
     public Queue<GameObject> Bullet_queue = new Queue<GameObject>();
 
+    [SerializeField]
+    private GameObject Grenade;
     [SerializeField]
     private Gun_Manager currentGun;
     [SerializeField]
@@ -30,7 +33,7 @@ public class Gun_Shooting : MonoBehaviour
     public float lookAngle;
 
     private bool is_Reload = false;
-    //private AudioSource audioSource;
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -84,6 +87,11 @@ public class Gun_Shooting : MonoBehaviour
         {
             ReloadSlider.gameObject.SetActive(true);
         }
+        if(Input.GetKeyDown(KeyCode.G)&&Grenade_num>0)
+        {
+            Fire_Grenade();
+            Grenade_num--;
+        }    
     }
     public void FireBullet()
     {
@@ -124,9 +132,7 @@ public class Gun_Shooting : MonoBehaviour
     {
         currentGun.currentBulletCount--;
         currentFireRate = currentGun.fireRate;//연사 속도 재계산
-        //PlaySE(currentGun.fire_Sound);
-        //currentGun.muzzleFlash.Play();
-
+        PlaySE();
     }
 
 
@@ -170,6 +176,12 @@ public class Gun_Shooting : MonoBehaviour
             is_Reload = false;
         }
     }
+
+    public void Fire_Grenade()
+    {
+        GameObject Grenade_ = Instantiate(Grenade, GunTip.position, GunTip.rotation);
+        Grenade_.GetComponent<Rigidbody2D>().velocity = Grenade_.transform.right * 10f;
+    }
     public void GunChange(Gun_Manager Gun)
     {
         if(WeaponManager.currentWeapon!=null)
@@ -184,9 +196,10 @@ public class Gun_Shooting : MonoBehaviour
     {
         return currentGun;
     }
-    /*private void PlaySE(AudioClip _clip)
+
+    private void PlaySE()
    {
-       audioSource.clip = _clip;
+       audioSource.clip = currentGun.fire_Sound;
        audioSource.Play();
-   }*/
+   }
 }

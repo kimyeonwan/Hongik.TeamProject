@@ -41,6 +41,10 @@ public class WeaponManager : MonoBehaviour
             {
                 StartCoroutine(ChangeWeaponCoroutine("SubMachinGun"));
             }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                StartCoroutine(ChangeWeaponCoroutine("ShootGun"));
+            }
         }
 
     }

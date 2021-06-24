@@ -28,6 +28,7 @@ public class HUD : MonoBehaviour
         currnet_gun = Gun_Shooting.instance.GetGun();
         text_Bullet[0].text = currnet_gun.currentBulletCount.ToString();
         text_Bullet[1].text = currnet_gun.carryBulletCount.ToString();
+        text_Bullet[2].text = Gun_Shooting.instance.Grenade_num.ToString();
 
     }
 }

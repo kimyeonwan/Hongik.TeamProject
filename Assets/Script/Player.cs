@@ -33,9 +33,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-
-        Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
-
         RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1.5f, LayerMask.GetMask("Platform"));
 
         if (Input.GetButtonDown("Jump") && rayHit.collider != null)
@@ -89,14 +86,12 @@ public class Player : MonoBehaviour
         }
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            moveVelocity = Vector3.left;
-
             animator.SetBool("Run", true);
+            moveVelocity = Vector3.left;
         }
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
             moveVelocity = Vector3.right;
-
             animator.SetBool("Run", true);
         }
         transform.position += moveVelocity * MoveSpeed * Time.deltaTime;

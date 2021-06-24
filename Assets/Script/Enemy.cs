@@ -111,6 +111,10 @@ public class Enemy : MonoBehaviour
             OnHit(currentGun.Gun_Dmg);
             //Destroy(gameObject);
         }
+        if(collision.gameObject.tag=="Boom")
+        {
+            OnHit(25);
+        }
         if (collision.gameObject.tag == "Player")
         {
             
