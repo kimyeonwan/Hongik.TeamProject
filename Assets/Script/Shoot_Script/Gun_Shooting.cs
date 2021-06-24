@@ -24,6 +24,8 @@ public class Gun_Shooting : MonoBehaviour
     private Gun_Manager currentGun;
     [SerializeField]
     private GameObject Player_Pos;
+    [SerializeField]
+    private GameObject ShotGunBullet;
 
     public Slider ReloadSlider;
     float Reload_CooldownCurrent = 0.0f;
@@ -41,7 +43,7 @@ public class Gun_Shooting : MonoBehaviour
 
     private void Start()
     {
-        //audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         instance = this;
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.loop = false;
@@ -72,7 +74,14 @@ public class Gun_Shooting : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)&&currentFireRate <= 0)
         {
-            FireBullet();
+            if(currentGun.GunName=="ShootGun")
+            {
+                FireShotGun();
+            }
+            else
+            {
+                FireBullet();
+            }
         }
         if(Input.GetKeyDown(KeyCode.R))
         {
@@ -112,6 +121,17 @@ public class Gun_Shooting : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             audioSource.clip = fire_Sound3;
+        }
+    }
+    public void FireShotGun()
+    {
+        if (currentGun.currentBulletCount > 0)
+        {
+
+            Instantiate(ShotGunBullet, GunTip.transform.position, GunTip.transform.rotation);
+            currentGun.currentBulletCount-=3;
+            currentFireRate = currentGun.fireRate;//연사 속도 재계산
+            PlaySE();
         }
     }
     public void FireBullet()
@@ -205,7 +225,7 @@ public class Gun_Shooting : MonoBehaviour
     }
     public void GunChange(Gun_Manager Gun)
     {
-        if(WeaponManager.currentWeapon!=null)
+        if (WeaponManager.currentWeapon != null)
         {
             WeaponManager.currentWeapon.gameObject.SetActive(false);
         }
