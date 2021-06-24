@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Game_Manager : MonoBehaviour
 {
+    public Game_Manager instance;
     //UI 패널 지우기
     public GameObject panel;
     private float destroyTime = 2.0f;
@@ -14,11 +15,14 @@ public class Game_Manager : MonoBehaviour
     public float maxSpawnDelay;
     public float curSpawnDelay;
 
+    public GameObject Textmesh;
+
     public GameObject player;
 
 
     public int enemyDeadnum;
     public bool isBoss;
+
 
     public AudioSource audioSource;
     public AudioClip BGMSound;
@@ -33,6 +37,7 @@ public class Game_Manager : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.loop = false;
         audioSource.volume = 0.3f;
+        Textmesh.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,6 +55,14 @@ public class Game_Manager : MonoBehaviour
         {
             audioSource.clip = BGMSound;
             audioSource.Play();
+        }
+        if(enemyDeadnum>8&&isBoss==false)
+        {
+            Textmesh.SetActive(true);
+        }
+        if(isBoss==true)
+        {
+            Textmesh.SetActive(false);
         }
     }
 
